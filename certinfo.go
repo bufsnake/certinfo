@@ -92,12 +92,12 @@ func printName(names []pkix.AttributeTypeAndValue, buf *bytes.Buffer) []string {
             case 17:
                 values = append(values, fmt.Sprintf("PC=%s", name.Value))
             default:
-                values = append(values, fmt.Sprintf("UnknownOID=%s", name.Type.String()))
+                values = append(values, fmt.Sprintf("OID(%s)=%s",name.Type.String(), name.Value))
             }
         } else if oid.Equal(oidEmailAddress) {
-            values = append(values, fmt.Sprintf("emailAddress=%s", name.Value))
+            values = append(values, fmt.Sprintf("EmailAddress=%s", name.Value))
         } else {
-            values = append(values, fmt.Sprintf("UnknownOID=%s", name.Type.String()))
+            values = append(values, fmt.Sprintf("OID(%s)=%s",name.Type.String(), name.Value))
         }
     }
     if len(values) > 0 {
